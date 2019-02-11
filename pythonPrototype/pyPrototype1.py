@@ -60,6 +60,7 @@ def begin():
     with open("terms.txt", "r") as terms: 
         print(terms.read()*3)
 
+    # Force user to agree to terms and conditions
     agree = False
     while not agree:
         userAgrees = input("Do you agree to the terms and conditions? [Y/N]: ")
@@ -67,28 +68,12 @@ def begin():
             agree = True
     print("Thank you.")
     time.sleep(0.8)
-
+    os.system('clear')
     time.sleep(0.5)
     print("Sending e-mail...")
     time.sleep(0.8)
     print("Email sent. Please check your inbox")
 
-    # SEND E-MAIL
-    # sender = 'friend@gmail.com'
-    # message = """From: From Person <from@fromdomain.com>
-    #     To: To Person <to@todomain.com>
-    #     Subject: SMTP e-mail test
-
-    #     This is a test e-mail message.
-    #     """
-    # try:
-    #     s = smtplib.SMTP('smtp.gmail.com', 587)
-    #     s.startls()
-    #     s.login("alwaysmiscellaneous@gmail.com", "xtraASF10")
-    #     smtpObj.sendmail(sender, [email], message)         
-    #     print("Successfully sent email")
-    #     s.quit()
-    # except:
-    #     print("E-mail didn't send")
+    # TODO: SEND E-MAIL
 
 main()
