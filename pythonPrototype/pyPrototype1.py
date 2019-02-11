@@ -69,7 +69,7 @@ def begin():
     msg['From'] = "friend@untitled.com"
     msg['To'] = email
 
-    s = smtplib.SMTP('localhost', 1025)
+    s = smtplib.SMTP('smtp.gmail.com', 587)
     s.sendemail("friend@untitled.com", [email], msg.as_string())
     s.quit()
 
