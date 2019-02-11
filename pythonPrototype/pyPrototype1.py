@@ -16,7 +16,7 @@
 # 	3.2 if they say yes, print out a smiley face then clear screen
 # 		Welcome. The session will begin in 3, 2, 1... 
 
-import time, sys
+import time, sys, os
 import smtplib
 from email.mime.text import MIMEText
 
@@ -55,22 +55,40 @@ def begin():
     username = input("Please type in your full name: ")
     bday = input("Please type in your birthday: ")
     email = input("Please type in your e-mail: ")
+
+    # Print terms and conditions
+    with open("terms.txt", "r") as terms: 
+        print(terms.read()*3)
+
+    agree = False
+    while not agree:
+        userAgrees = input("Do you agree to the terms and conditions? [Y/N]: ")
+        if (userAgrees[0].lower() == "y"):
+            agree = True
+    print("Thank you.")
+    time.sleep(0.8)
+
     time.sleep(0.5)
     print("Sending e-mail...")
     time.sleep(0.8)
     print("Email sent. Please check your inbox")
 
     # SEND E-MAIL
-    #textfile = open("msg.txt", 'r')
-    with open("msg.txt", 'r') as emailMsg:
-        msg = MIMEText(emailMsg.read())
+    # sender = 'friend@gmail.com'
+    # message = """From: From Person <from@fromdomain.com>
+    #     To: To Person <to@todomain.com>
+    #     Subject: SMTP e-mail test
 
-    msg['Subject'] = 'Welcome!'
-    msg['From'] = "friend@untitled.com"
-    msg['To'] = email
-
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.sendemail("friend@untitled.com", [email], msg.as_string())
-    s.quit()
+    #     This is a test e-mail message.
+    #     """
+    # try:
+    #     s = smtplib.SMTP('smtp.gmail.com', 587)
+    #     s.startls()
+    #     s.login("alwaysmiscellaneous@gmail.com", "xtraASF10")
+    #     smtpObj.sendmail(sender, [email], message)         
+    #     print("Successfully sent email")
+    #     s.quit()
+    # except:
+    #     print("E-mail didn't send")
 
 main()
