@@ -56,23 +56,36 @@ def begin():
     bday = input("Please type in your birthday: ")
     email = input("Please type in your e-mail: ")
 
-    # Print terms and conditions
-    with open("terms.txt", "r") as terms: 
-        print(terms.read()*3)
+     # Depending on their maritial status, have a following question?
+    maritial = input("Please indicate your maritial Status [married/single/widowed]: ")
 
-    # Force user to agree to terms and conditions
+    # Force user to agree to download the files
     agree = False
     while not agree:
-        userAgrees = input("Do you agree to the terms and conditions? [Y/N]: ")
+        userAgrees = input("Update found. Do you want to download the files [Y/N]?: ")
         if (userAgrees[0].lower() == "y"):
             agree = True
+
+    # Print a bunch of standard installation statements
+    with open("terms.txt", "r") as terms: 
+        updateMsg = terms.read()
+    for line in updateMsg.splitlines():
+        print(line)
+        time.sleep(0.2)
+    
+    # Clear screen for thank you message
+    time.sleep(0.5)
+    os.system('clear')
+    time.sleep(0.8)
     print("Thank you.")
     time.sleep(0.8)
+
+    # Clear screen for e-mail sent message.
     os.system('clear')
     time.sleep(0.5)
-    print("Sending e-mail...")
+    print("Update complete. E-mail confirmation was sent.")
     time.sleep(0.8)
-    print("Email sent. Please check your inbox.")
+    print("Please check your inbox.")
     time.sleep(0.8)
 
     # TODO: SEND E-MAIL
