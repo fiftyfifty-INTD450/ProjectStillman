@@ -72,7 +72,8 @@ def begin():
     time.sleep(0.5)
     print("Sending e-mail...")
     time.sleep(0.8)
-    print("Email sent. Please check your inbox")
+    print("Email sent. Please check your inbox.")
+    time.sleep(0.8)
 
     # TODO: SEND E-MAIL
 
